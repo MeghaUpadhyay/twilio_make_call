@@ -1,1 +1,1 @@
-web: python voice_cal.py
+web: gunicorn voice_cal:app
