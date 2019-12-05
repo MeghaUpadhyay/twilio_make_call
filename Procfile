@@ -1,1 +1,1 @@
-web: python voice_cal.py
+worker: python voice_cal.py
