@@ -11,7 +11,7 @@ def voice():
     resp = VoiceResponse()
 
     # Read a message aloud to the caller
-    resp.say("Hi , Thanks for calling PayPal Mobile Banking.", voice='alice')
+    resp.say("Hi , Thanks for calling PayPal offline payment service.", voice='alice')
     
     resp.hangup()
 
