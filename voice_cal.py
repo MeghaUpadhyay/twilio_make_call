@@ -23,7 +23,7 @@ def voice():
     resp.hangup()
 
     #Store caller details in mysql db
-    #storeCallerDetails(caller, 0)
+    storeCallerDetails(caller, 0)
 
     return str(resp)
 
