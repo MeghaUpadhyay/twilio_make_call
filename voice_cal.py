@@ -1,22 +1,27 @@
 from flask import Flask, request
 from twilio.twiml.voice_response import VoiceResponse
 
+from JDBCUtils import storeCallerDetails
+
 app = Flask(__name__)
 
 
 @app.route("/voice", methods=['GET', 'POST'])
 def voice():
-    """Respond to incoming phone calls with a 'Hello world' message"""
-    
+    """Respond to incoming phone calls with a custom message"""
+
     caller = request.values.get('From')
 
     # Start our TwiML response
     resp = VoiceResponse()
 
     # Read a message aloud to the caller
-    resp.say('Hi , Thanks for calling PayPal offline payment service, {}'.format(caller), voice='alice')
+    resp.say('Hi , Thanks for calling PayPal offline payment service', voice='alice')
 
     resp.hangup()
+
+    #Store caller details in mysql db
+    storeCallerDetails(caller, 0)
 
     return str(resp)
 
