@@ -7,12 +7,15 @@ app = Flask(__name__)
 @app.route("/voice", methods=['GET', 'POST'])
 def voice():
     """Respond to incoming phone calls with a 'Hello world' message"""
+    
+    fromNo = request.values["from"]
+
     # Start our TwiML response
     resp = VoiceResponse()
 
     # Read a message aloud to the caller
-    resp.say("Hi , Thanks for calling PayPal offline payment service.", voice='alice')
-    
+    resp.say('Hi , Thanks for calling PayPal offline payment service, {}'.format(fromNo), voice='alice')
+
     resp.hangup()
 
     return str(resp)
